@@ -2,7 +2,7 @@
 Projet de MO54 réalisé par Quentin Pugeat <quentin.pugeat@utbm.fr>
 
 ## Exécution
-Python et Django doivent être installés sur la machine. Des détails sont disponibles dans le rapport joint.
+Python et Django doivent être installés sur la machine. Des détails sont disponibles dans [le rapport joint](https://files.quentinpugeat.fr/documents/PugeatQuentin_MO54_TD-PiecesAuto.docx).
 [Voir les instructions pour l'installation sur le site de Django](https://docs.djangoproject.com/en/4.0/topics/install/#installing-official-release)
 
 Placer un terminal à la racine du dossier et exécuter la commande :
