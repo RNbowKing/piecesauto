@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %} Réclamation pour la commande #{{commande.id}} {% endblock %}
+
+{% block content %} 
+
+<h2>Réclamation pour la commande #{{commande.id}}</h2>
+
+{% if not reclamation %}
+    <div class="msg">
+        Aucune réclamation n'est ouverte pour cette commande, souhaitez-vous en ouvrir une ?
+    </div>
+<a class="btn blue-btn" href="new">Oui</a> <a class="btn blue-btn" href="..">Non</a>
+{% else %}
+    <h4>Réclamation #{{reclamation.id}}</h4>
+    {% if not messages %}
+        <div class="msg">
+            Aucun message pour le moment.
+        </div>
+    {% else %}
+        {% for message in messages %}
+        <div class="reclamation-message">
+            <p class="reclamation-message-header">
+                {% if message.inward %}
+                    <i class="bi bi-building"></i> <i class="bi bi-arrow-left"></i> <i class="bi bi-person-circle"></i>
+                {% else %}
+                    <i class="bi bi-building"></i> <i class="bi bi-arrow-right"></i> <i class="bi bi-person-circle"></i>
+                {% endif %}
+                {{message.envoye_le}}
+            </p>
+            <p class="reclamation-message-subject">{{message.sujet}}</p>            
+            <p class="reclamation-message-body">{{message.message}}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% if reclamation.est_ouvert %}
+        <div class="reclamation-message">
+            <p class="reclamation-message-header">
+                <i class="bi bi-building"></i> <i class="bi bi-arrow-left"></i> <i class="bi bi-person-circle"></i> Nouveau message
+            </p>
+            <form action="sendmessage" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="reclamation_id" value="{{reclamation.id}}">
+                <div class="form-control reclamation-message-new">
+                    <label for="sujet">Sujet</label>
+                    <input type="text" name="sujet" id="sujet" required>
+                </div>
+                <div class="form-control reclamation-message-new">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" required></textarea>
+                </div>
+                <div class="form-control reclamation-message-new">
+                    <button type="submit" class="btn blue-btn">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="reclamation-message">
+            <p class="reclamation-message-header">
+                Cette réclamation n'est plus ouverte.
+            </p>
+            <p class="reclamation-message-new">
+                Vous ne pouvez plus envoyer de messages pour cette réclamation, car le vendeur l'a marquée comme étant résolue.
+                <a class="btn blue-btn" href="new">Ouvrir une nouvelle réclamation pour cette commande</a>
+            </p>
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

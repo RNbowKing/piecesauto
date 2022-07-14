@@ -1,0 +1,17 @@
+@page {
+    margin: 10px;
+}
+
+@media print {
+    nav {
+        display: none;
+    }
+
+    .breadcrumb-section {
+        display: none;
+    }
+
+    footer a {
+        display: none;
+    }
+}

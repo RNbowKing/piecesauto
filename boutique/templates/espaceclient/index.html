@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Espace client {% endblock %}
+{% block content %} 
+<h2>Espace client</h2>
+
+{% if is_authenticated %}
+    <h3>Bonjour, {{user.first_name}} !</h3>
+    <div class="menu">
+        <a href="compte"><i class="bi bi-key-fill"></i> Modifier mon compte <i class="bi bi-chevron-right"></i></a>
+        <a href="profil"><i class="bi bi-person-rolodex"></i> Modifier mon profil client <i class="bi bi-chevron-right"></i></a>
+        <a href="commandes"><i class="bi bi-receipt"></i> Voir mes commandes <i class="bi bi-chevron-right"></i></a>
+        <a href="panier"><i class="bi bi-basket"></i> Voir mon panier <i class="bi bi-chevron-right"></i></a>
+        <a href="/auth/logout"><i class="bi bi-power"></i> Se déconnecter <i class="bi bi-chevron-right"></i></a>
+    </div>
+{% else %}
+    <div class="menu">
+        <h3>Bienvenue !</h3>
+        <a href="panier"><i class="bi bi-basket"></i> Mon panier <i class="bi bi-chevron-right"></i></a>
+        <a href="/auth/login"><i class="bi bi-box-arrow-in-right"></i> Se connecter ou créer un compte <i class="bi bi-chevron-right"></i></a>
+    </div>
+{% endif %}
+{% endblock %}

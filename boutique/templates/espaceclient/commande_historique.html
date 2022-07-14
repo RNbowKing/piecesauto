@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Historique de la commande #{{commande.id}} {% endblock %}
+
+{% block content %} 
+
+<h2>Historique de la commande #{{commande.id}}</h2>
+
+<h4>États de la commande</h4>
+<div class="table-wrapper">
+    <table>
+        <thead><tr><th>Code d'état</th><th>Date</th></tr></thead>
+        <tbody>{% for item in etats %}
+        <tr><td>{{item.etat_label}}</td><td>{{item.date}}</td></tr>
+        {% endfor %}</tbody>
+    </table>
+</div>
+
+<h4>Contenu de la commande</h4>
+<div class="table-wrapper">
+    <table>
+        <thead><tr><th>Référence</th><th>Libellé</th><th>Quantité</th><th>Prix pièce</th><th>Total</th></tr></thead>
+        <tbody>{% for item in entrees %}
+        <tr><td>{{item.produit.reference}}</td><td>{{item.produit.nom}}</td><td>{{item.quantite}}</td><td>{{item.produit.prix_ttc}} €</td><td>{{item.total}} €</td></tr>
+        {% endfor %}</tbody>
+        <tr><td colspan="4">Montant total facturé</td><td>{{totalpanier}} €</td></tr>
+    </table>
+</div>
+
+{% endblock %}

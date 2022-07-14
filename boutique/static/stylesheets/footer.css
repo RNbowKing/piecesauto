@@ -1,0 +1,17 @@
+/* Footer */
+
+footer {
+    background-color: #6b95cc;
+    color: white;
+    padding: .8rem 3rem;
+}
+
+footer a {
+    color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    footer {
+        background-color: #054497;
+    }
+}

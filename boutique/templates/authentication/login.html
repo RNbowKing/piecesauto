@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Se connecter {% endblock %}
+{% block content %} 
+<h2>Se connecter</h2>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+<form action="submitlogin" method="POST">
+    {% csrf_token %}
+    {% if next %} <input type="hidden" name="next" value="{{next}}"> {% endif %}
+    <div class="form-control">
+        <label for="username">Identifiant</label>
+        <input type="text" autocomplete="username" name="username" id="username" value="{{username}}" required {% if not username %} autofocus {% endif %}>
+    </div>
+    <div class="form-control">
+        <label for="password">Mot de passe</label>
+        <input type="password" autocomplete="current-password" name="password" id="password" required {% if username %} autofocus {% endif %}>
+    </div>
+    <div class="form-control">
+        <button class="btn-blue" type="submit">Se connecter <i class="bi bi-chevron-right"></i></button>
+    </div>
+</form>
+<hr>
+<a href="/auth/newaccount">Créer un nouveau compte</a>
+{% endblock %}

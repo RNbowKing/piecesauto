@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Quentin Pugeat">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - MesPiècesAuto.fr</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+
+    <link rel="icon" href="{% static 'logos/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/header.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/list.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/controls.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/tables.css' %}">
+</head>
+<body>
+    <header class="secure">
+        <div class="navbar-title">
+            <i class="bi bi-shop"></i>
+            <span>MesPiècesAuto.fr</span>
+        </div>
+        <div>
+            <i class="bi bi-lock"></i>
+            <span>Environnement sécurisé</span>
+        </div>
+    </header>
+    <section class="secure breadcrumb-section">
+        <a href="/"><i class="bi bi-chevron-left"></i> Revenir au site</a>
+    </section>
+    <section class="content-section">
+        {% block content %}{% endblock %}
+    </section>
+    <footer>
+        (C) 2022 Quentin Pugeat - quentinpugeat.fr - <a href="/admin">Administration du site</a>
+    </footer>
+</body>
+</html>

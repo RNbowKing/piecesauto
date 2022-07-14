@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Mon compte {% endblock %}
+{% block content %} 
+<h2>Mon compte</h2>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+<form action="change" method="POST">
+    {% csrf_token %}
+    <div class="form-control">
+        <label for="username">Identifiant*</label>
+        <input type="text" autocomplete="username" name="username" id="username" value="{{user.username}}" required readonly>
+        <p class="hint">Vous ne pouvez pas changer votre identifiant</p>
+    </div>
+    <div class="form-control">
+        <label for="firstname">Prénom*</label>
+        <input type="text" autocomplete="given-name" name="firstname" id="firstname" value="{{user.first_name}}" required>
+    </div>
+    <div class="form-control">
+        <label for="lastname">Nom de famille*</label>
+        <input type="text" autocomplete="family-name" name="lastname" id="lastname" value="{{user.last_name}}" required>
+    </div>
+    <div class="form-control">
+        <label for="email">Adresse de courriel*</label>
+        <input type="email" autocomplete="email" name="email" id="email" value="{{user.email}}" required>
+    </div>
+    <hr>
+    <div class="form-control">
+        <label for="password">Saisissez votre mot de passe pour continuer*</label>
+        <input type="password" autocomplete="current-password" name="password" id="password" required>
+    </div>
+    <div class="form-control">
+        <button class="blue-btn" type="submit">Terminé <i class="bi bi-chevron-right"></i></button>
+    </div>
+</form>
+
+{% endblock %}

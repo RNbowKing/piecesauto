@@ -1,0 +1,88 @@
+.panier-action-btn, button, .btn {
+    border: none;
+    display: inline-block;
+    padding: .8rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.green-btn {
+    background-color: green;
+    color: white;
+    transition: background-color ease .2s;
+}
+
+.green-btn:hover {
+    background-color: rgb(3, 175, 3);
+}
+
+.green-btn:active {
+    background-color: rgb(1, 105, 1);
+}
+
+.blue-btn {
+    background-color: #6b95cc;
+    color: white;
+    transition: background-color ease .2s;
+}
+
+.blue-btn:hover {
+    background-color: #7fb0f2;
+}
+
+.blue-btn:active {
+    background-color: #5678a5;
+}
+
+.red-btn {
+    background-color: rgb(199, 0, 0);
+    color: white;
+    transition: background-color ease .2s;
+}
+
+.red-btn:hover {
+    background-color: red;
+}
+
+.red-btn:active {
+    background-color: rgb(165, 0, 0);
+}
+
+@media (prefers-color-scheme: dark) {
+    .green-btn {
+        background-color: green;
+    }
+    
+    .green-btn:hover {
+        background-color: rgb(3, 175, 3);
+    }
+    
+    .green-btn:active {
+        background-color: rgb(1, 105, 1);
+    }
+    
+    .blue-btn {
+        background-color: #054497;
+    }
+    
+    .blue-btn:hover {
+        background-color: #054fb0;
+    }
+    
+    .blue-btn:active {
+        background-color: #032d64;
+    }
+    
+    .red-btn {
+        background-color: rgb(199, 0, 0);
+    }
+    
+    .red-btn:hover {
+        background-color: red;
+    }
+    
+    .red-btn:active {
+        background-color: rgb(165, 0, 0);
+    }
+}

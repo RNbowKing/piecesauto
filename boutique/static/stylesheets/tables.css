@@ -1,0 +1,14 @@
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    border: 1px solid grey;
+    border-spacing: 0;
+}
+
+td, th {
+    border: 1px solid grey;
+    vertical-align: top;
+    padding: .2rem 1rem;
+}

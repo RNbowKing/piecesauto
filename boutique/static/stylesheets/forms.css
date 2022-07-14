@@ -1,0 +1,25 @@
+.form-control {
+    margin-bottom: 1rem;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: .2rem;
+}
+
+.form-control input, textarea {
+    font-size: 1rem;
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-control button {
+    font-size: 1rem;
+}
+
+.form-control .hint {
+    margin-top: 1px;
+    font-size: .75rem;
+    font-style: italic;
+}

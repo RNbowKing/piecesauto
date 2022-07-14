@@ -1,0 +1,103 @@
+/* Catalogue rules */
+
+.catalogue-global-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.catalogue-image {
+    background-image: linear-gradient(to top right, rgb(0, 162, 255), rgb(195, 104, 255));
+    padding: 2rem;
+    flex:1;
+    min-height: 200px;
+}
+
+.catalogue-content {
+    flex:2;
+    min-width: 50%;
+}
+
+.produit-descriptif {
+    font-style: italic;
+    font-size: 1.2rem;
+    white-space:pre-wrap;
+}
+
+.prix-ttc {
+    font-weight: bold;
+    color: red;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.stock {
+    margin-top: 2px;
+}
+
+
+.add-panier-btn {
+    display: inline-block;
+    border: solid #6b95cc 1px;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    background-color: #6b95cc;
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.add-panier-btn:hover {
+    background-color: #77a6e4;
+}
+
+.add-panier-btn:active {
+    background-color: #618fca;
+}
+
+.msg {
+    background-color:#618fca;
+    color: white;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 810px) {
+    .catalogue-global-div {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .catalogue-image {
+        background-image: linear-gradient(to top right, darkblue, rgb(72, 0, 139));
+    }
+    
+    .prix-ttc {
+        color: rgb(209, 0, 0);
+    }
+    
+    
+    .add-panier-btn {
+        border: solid #054497 1px;
+        background-color: #054497;
+        color: white;
+    }
+    
+    .add-panier-btn:hover {
+        background-color: #054fb0;
+    }
+    
+    .add-panier-btn:active {
+        background-color: #032d64;
+    }
+    
+    .msg {
+        background-color:#054497;
+        color: white;
+    }
+}

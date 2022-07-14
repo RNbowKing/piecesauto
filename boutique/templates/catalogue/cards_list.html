@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} {{list_title}} {% endblock %}
+
+{% block content %} 
+
+<h2>{{list_title}}</h2>
+<p>{{list_description}}</p>
+
+<div class="browsable-card-list">
+    {% for item in list_items %}
+    <a class="list-item" href="{{slug_prefix}}{{item.item_slug}}">
+        <div class="list-item-picture"></div>
+        <div class="list-item-textdiv">
+            <span class="list-item-title">{{item.item_label}}</span><br>
+            <span class="list-item-description">{{item.item_description|truncatechars:150}}</span><br>
+            <span class="list-item-price">{{item.item_price}} €</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

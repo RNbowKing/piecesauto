@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} Panier {% endblock %}
+{% block content %} 
+<h2>Votre panier</h2>
+
+<script>
+    function tout_supprimer () {
+        if(confirm('Voulez-vous vraiment vider votre panier ?')) {
+            window.location.replace('/espaceclient/panier/vider');
+        }
+    }
+
+    function supprimer_item (item_id) {
+        if(confirm('Voulez-vous vraiment retirer ce produit du panier ?')) {
+            window.location.replace('/espaceclient/panier/supprimer/'+item_id);
+        }
+    }
+</script>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+{% if panier %}
+    {% for item in panier %}
+        <div class="panier-item">
+            <div><span class="panier-item-img"></span> {{item.produit.nom}}</div>
+            <div>
+                <form action="changer" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="produit_id" value="{{item.produit.id}}">
+                    <input type="number" name="new_qte" value="{{item.qte}}" min="1" max="{{item.produit.stock}}">
+                    <button class="panier-action-btn blue-btn" type="submit" title="Changer la quantité"><i class="bi bi-check-circle"></i></button>
+                </form>
+                <button class="panier-action-btn red-btn" onclick="supprimer_item({{item.produit.id}})" title="Retirer ce produit"><i class="bi bi-trash"></i></button>
+            </div>
+        </div>
+    {% endfor %}
+    <hr>
+    <a class="panier-action-btn green-btn" href="/commande/saisie"><i class="bi bi-bag-check"></i> Valider le panier</a>
+    <a class="panier-action-btn red-btn" href="#vider" onclick="tout_supprimer()"><i class="bi bi-trash"></i> Vider le panier</a>
+{% else %}
+    {% comment %} <div>Panier vide !</div> {% endcomment %}
+{% endif %}
+{% endblock %}

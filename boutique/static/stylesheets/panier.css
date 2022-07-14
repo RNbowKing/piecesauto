@@ -1,0 +1,46 @@
+/* Panier rules */
+.panier-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding: .8rem 0;
+}
+
+.panier-item:hover {
+    background-color: #eee;
+}
+
+.panier-item-img {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 15px;
+    margin-right: 5px;
+    background-color: rgb(116, 172, 255);
+}
+
+.panier-item form {
+    display: inline-block;
+}
+
+.panier-item input[type=number] {
+    font-size: 1rem;
+    max-width: 80px;
+}
+
+.panier-item button {
+    font-size: 1rem;
+    padding: .5rem .7rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .panier-item:hover {
+        background-color: #444;
+    }
+    
+    .panier-item-img {
+        background-color: #032d64;
+    }
+}

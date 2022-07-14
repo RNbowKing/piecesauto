@@ -1,0 +1,5 @@
+# Visual Studio Stuff
+.vs
+
+# Python Cache
+__pycache__

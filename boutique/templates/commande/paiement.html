@@ -1,0 +1,34 @@
+{% extends "base_secure.html" %}
+
+{% block title %} Passage de commande dans l'environnement sécurisé {% endblock %}
+
+{% block content %} 
+
+<div style="margin-top: 1rem;">
+    <a class="btn red-btn" href="/commande/saisie">Revenir à la première étape</a>
+</div>
+
+<h2>Passer commande</h2>
+<h3>Deuxième étape : envoyer le paiement</h3>
+<p>Les données que vous saisissez sur cette page ne seront pas envoyées au serveur, car elles sont inutiles pour ce prototype. Vous pouvez directement cliquer sur le bouton "Envoyer le paiement" sans rien saisir.</p>
+
+<div style="padding: 1rem; border: solid 1px green;">
+    <p style="font-weight: bold; margin-top: 0;">Montant total du panier : {{totalpanier}} €</p>
+    <div class="form-control">
+        <label for="cardnumber">Numéro de carte</label>
+        <input type="text" autocomplete="cc-number" name="cardnumber" id="cardnumber" required>
+    </div>
+    <div class="form-control">
+        <label for="expirydate">Date d'expiration</label>
+        <input style="max-width: 100px;" type="number" autocomplete="cc-exp-month" name="expirymonth" id="expirymonth" min="1" max="12" required>
+        <input style="max-width: 100px;" type="number" autocomplete="cc-exp-year" name="expiryyear" id="expiryyear" min="2022" required>
+    </div>
+    <div class="form-control">
+        <label for="csc">Cryptogramme</label>
+        <input style="max-width: 100px;" type="text" autocomplete="cc-csc" name="csc" id="csc" required>
+        <p class="hint">Il s'agit des chiffres situés à l'arrière de la carte.</p>
+    </div>
+    <a class="btn green-btn" href="/commande/recap">Envoyer le paiement</a>
+</div>
+
+{% endblock %}

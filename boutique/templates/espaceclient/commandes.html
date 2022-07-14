@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Mes commandes {% endblock %}
+{% block content %} 
+<h2>Mes commandes</h2>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+{% if commandes %}
+    {% for item in commandes %}
+        <div class="commande-item">
+            <div>
+                {% if item.dernier_code_etat == 'new' %}
+                <i class="commande-icon bi bi-cart"></i>
+                {% elif item.dernier_code_etat == 'acc' %}
+                <i class="commande-icon bi bi-cart-check"></i>
+                {% elif item.dernier_code_etat == 'dec' %}
+                <i class="commande-icon bi bi-cart-x"></i>
+                {% elif item.dernier_code_etat == 'sen' %}
+                <i class="commande-icon bi bi-truck"></i>
+                {% elif item.dernier_code_etat == 'dis' %}
+                <i class="commande-icon bi bi-house"></i>
+                {% elif item.dernier_code_etat == 'can' %}
+                <i class="commande-icon bi bi-cart-x"></i>
+                {% else %}
+                <i class="commande-icon bi bi-cart"></i>
+                {% endif %} 
+                Commande #{{item.id}} - {{item.dernier_etat}} depuis le {{item.dernier_etat_date}} - {{item.get_nb_elements}} entrée(s)</div>
+            <div>
+                <a href="{{item.id}}" class="commande-action-btn blue-btn" title="Historique"><i class="bi bi-clock-history"></i></a>
+                <button class="commande-action-btn blue-btn" title="Télécharger la facture"><i class="bi bi-receipt"></i></button>
+                <a href="{{item.id}}/reclamation" class="commande-action-btn red-btn" title="Envoyer une réclamation"><i class="bi bi-send-exclamation"></i></a>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div>Aucune commande passée avec ce compte.</div>
+{% endif %}
+{% endblock %}

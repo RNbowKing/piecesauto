@@ -1,0 +1,90 @@
+/* Global layout rules */
+
+body {
+    margin: 0;
+}
+
+.breadcrumb-section {
+    background-color: #eee;
+    padding: .8rem 3rem;
+}
+
+.breadcrumb-section ul {
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-section ul li {
+    display: inline;
+}
+
+.breadcrumb-section ul li {
+    display: inline;
+    margin: 0 .25rem;
+}
+
+.breadcrumb-section ul li:first-child {
+    margin-left:0
+}
+
+.breadcrumb-section ul li:last-child {
+    margin-right:0
+}
+
+.secure.breadcrumb-section a {
+    text-decoration: none;
+}
+
+.content-section {
+    padding: 1rem 3rem;
+}
+
+.menu a {
+    display: block;
+    text-decoration: none;
+
+    color: black;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+
+    transition: color ease .2s;
+}
+
+.menu a i:first-of-type {
+    font-size: 1.8rem;
+    margin-right: .5rem;
+    vertical-align: middle;
+}
+
+.menu a:hover {
+    display: block;
+    text-decoration: none;
+
+    color: rgb(0, 132, 255);
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .breadcrumb-section {
+        background-color: rgb(80, 80, 80);
+        color: white;
+    }
+
+    .breadcrumb-section a {
+        color: lightblue;
+    }
+    
+    .menu a {
+        color: white;
+    }
+    
+    .menu a:hover {
+        color: #054fb0;
+    }
+}

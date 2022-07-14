@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %} Nouveau compte {% endblock %}
+{% block content %} 
+<h2>Nouveau compte</h2>
+<h3>Bienvenue ! Nous sommes heureux de pouvoir vous compter parmi nos nouveaux clients !</h3>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+<form action="submitnewaccount" method="POST">
+    {% csrf_token %}
+    {% if next %} <input type="hidden" name="next" value="{{next}}"> {% endif %}
+    <div class="form-control">
+        <label for="username">Identifiant</label>
+        <input type="text" autocomplete="username" name="username" id="username" required autofocus>
+    </div>
+    <div class="form-control">
+        <label for="username">Prénom</label>
+        <input type="text" autocomplete="given-name" name="firstname" id="firstname" required>
+    </div>
+    <div class="form-control">
+        <label for="username">Nom de famille</label>
+        <input type="text" autocomplete="family-name" name="lastname" id="lastname" required>
+    </div>
+    <div class="form-control">
+        <label for="username">Adresse de courriel</label>
+        <input type="email" autocomplete="email" name="email" id="email" required>
+    </div>
+    <div class="form-control">
+        <label for="password">Mot de passe</label>
+        <input type="password" autocomplete="new-password" name="password" id="password" required>
+    </div>
+    <div class="form-control">
+        <button class="btn-blue" type="submit">Créer un compte <i class="bi bi-chevron-right"></i></button>
+    </div>
+</form>
+<hr>
+<a href="/auth/login">J'ai déjà un compte</a>
+{% endblock %}

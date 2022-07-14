@@ -1,0 +1,36 @@
+/* Commandes rules */
+.commande-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    padding: .8rem 0;
+}
+
+.commande-icon {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+.commande-item:hover {
+    background-color: #eee;
+}
+
+.commande-action-btn, .commande-item button {
+    font-size: 1rem;
+    padding: .5rem .7rem;
+    border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .commande-item:hover {
+        background-color: #444;
+    }
+    
+    .commande-item-img {
+        background-color: #032d64;
+    }
+}

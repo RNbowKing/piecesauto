@@ -1,0 +1,45 @@
+{% extends "base_secure.html" %}
+
+{% block title %} Passage de commande dans l'environnement sécurisé {% endblock %}
+
+{% block content %} 
+
+<h2>Passer commande</h2>
+<h3>Première étape : finaliser la saisie</h3>
+
+<h4>Compte et profil client</h4>
+<p>Vérifiez si les informations sont correctes. Si elles ne sont pas correctes, vous pouvez les modifier dans l'espace client dès maintenant. Votre panier sera conservé pendant ce temps.</p>
+
+<table>
+    <tr><td>Compte</td><td>{{user.username}}</td></tr>
+    <tr><td>Nom, prénom</td><td>{{user.last_name}}, {{user.first_name}}</td></tr>
+    <tr><td>Adresse de courriel</td><td>{{user.email}}</td></tr>
+    <tr><td>Entreprise</td><td>{{profil.nom_entreprise}}</td></tr>
+    <tr><td>Adresse postale</td><td>{{profil.adresse_ligne1}}<br>{% if profil.adresse_ligne2 %} {{profil.adresse_ligne2}}<br>{% endif %}{{profil.code_postal}} {{profil.ville}}</td></tr>
+    <tr><td>Numéro de téléphone</td><td>{{profil.telephone}}</td></tr>
+</table>
+<div style="margin-top: 1rem;">
+    <a class="btn blue-btn" href="/espaceclient">Modifier les informations</a>
+    <a class="btn blue-btn" href="/auth/logout">Changer de compte</a>
+</div>
+<hr>
+<h4>Votre panier</h4>
+<p>Vérifiez si le contenu de votre panier vous convient.</p>
+<div class="table-wrapper">
+    <table>
+        <thead><tr><th>Référence</th><th>Libellé</th><th>Quantité</th><th>Prix pièce</th><th>Total</th></tr></thead>
+        <tbody>{% for item in panier %}
+        <tr><td>{{item.produit.reference}}</td><td>{{item.produit.nom}}</td><td>{{item.qte}}</td><td>{{item.produit.prix_ttc}} €</td><td>{{item.total}} €</td></tr>
+        {% endfor %}</tbody>
+    </table>
+</div>
+<div style="margin-top: 1rem;">
+    <a class="btn blue-btn" href="/espaceclient/panier">Modifier mon panier </a>
+</div>
+<hr>
+<div style="margin-top: 1rem;">
+    <p>Montant total du panier : {{totalpanier}} €</p>
+    <a class="btn green-btn" href="/commande/paiement">Continuer vers le paiement</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} Mon profil {% endblock %}
+{% block content %} 
+<h2>Mon profil</h2>
+
+{% if msg != '' %}
+    <div class="msg">{{msg}}</div>
+{% endif %}
+
+<form action="change" method="POST">
+    {% csrf_token %}
+    <div class="form-control">
+        <label for="nom_entreprise">Entreprise*</label>
+        <input type="text" autocomplete="organization" name="nom_entreprise" id="nom_entreprise" value="{{profil.nom_entreprise}}" required>
+        <p class="hint">Nom de l'entreprise que vous représentez</p>
+    </div>
+    <div class="form-control">
+        <label for="adresse_ligne1">Adresse (ligne 1)*</label>
+        <input type="text" autocomplete="address-line1" name="adresse_ligne1" id="adresse_ligne1" value="{{profil.adresse_ligne1}}" required>
+        <p class="hint">Numéro de bâtiment, nom de rue</p>
+    </div>
+    <div class="form-control">
+        <label for="adresse_ligne2">Adresse (ligne 2)</label>
+        <input type="text" autocomplete="address-line2" name="adresse_ligne2" id="adresse_ligne2" {% if profil.adresse_ligne2 %} value="{{profil.adresse_ligne2}}" {% endif %}>
+        <p class="hint">Informations complémentaires, si nécessaires</p>
+    </div>
+    <div class="form-control">
+        <label for="code_postal">Code postal*</label>
+        <input type="text" autocomplete="postal-code" name="code_postal" id="code_postal" value="{{profil.code_postal}}" required>
+    </div>
+    <div class="form-control">
+        <label for="ville">Ville*</label>
+        <input type="text" autocomplete="address-line3" name="ville" id="ville" value="{{profil.ville}}" required>
+    </div>
+    <div class="form-control">
+        <label for="telephone">Numéro de téléphone*</label>
+        <input type="tel" autocomplete="tel" name="telephone" id="telephone" value="{{profil.telephone}}" required>
+    </div>
+    <div class="form-control">
+        <button class="blue-btn" type="submit">Enregistrer <i class="bi bi-chevron-right"></i></button>
+    </div>
+</form>
+
+{% endblock %}

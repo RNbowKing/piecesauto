@@ -1,0 +1,31 @@
+{% extends "base_secure.html" %}
+
+{% block title %} Passage de commande dans l'environnement sécurisé {% endblock %}
+
+{% block content %} 
+
+<h2>Commande envoyée !</h2>
+<h3>Merci d'avoir choisi MesPiècesAuto.fr pour réaliser vos achats. Nous espérons vous rendre satisfaction !</h3>
+
+<h4>Compte et profil client</h4>
+<table>
+    <tr><td>Compte</td><td>{{user.username}}</td></tr>
+    <tr><td>Nom, prénom</td><td>{{user.last_name}}, {{user.first_name}}</td></tr>
+    <tr><td>Adresse de courriel</td><td>{{user.email}}</td></tr>
+    <tr><td>Entreprise</td><td>{{profil.nom_entreprise}}</td></tr>
+    <tr><td>Adresse postale</td><td>{{profil.adresse_ligne1}}<br>{% if profil.adresse_ligne2 %} {{profil.adresse_ligne2}}<br>{% endif %}{{profil.code_postal}} {{profil.ville}}</td></tr>
+    <tr><td>Numéro de téléphone</td><td>{{profil.telephone}}</td></tr>
+</table>
+
+<h4>Contenu de la commande</h4>
+<div class="table-wrapper">
+    <table>
+        <thead><tr><th>Référence</th><th>Libellé</th><th>Quantité</th><th>Prix pièce</th><th>Total</th></tr></thead>
+        <tbody>{% for item in panier %}
+        <tr><td>{{item.produit.reference}}</td><td>{{item.produit.nom}}</td><td>{{item.qte}}</td><td>{{item.produit.prix_ttc}} €</td><td>{{item.total}} €</td></tr>
+        {% endfor %}</tbody>
+        <tr><td colspan="4">Montant total facturé</td><td>{{totalpanier}} €</td></tr>
+    </table>
+</div>
+
+{% endblock %}
